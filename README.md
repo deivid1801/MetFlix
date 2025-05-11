@@ -1,10 +1,10 @@
 # Projeto Integrador - Modelo
-*(Coloque aqui o nome do seu projeto.)*
+# MetFlix
+
 
 Um modelo para o desenvolvimento do Projeto Integrador do Curso de Técnico em Desenvolvimento de Sistemas para a Internet Integrado ao Ensino Médio do IFC - Campus Araquari.
-*(Coloque aqui uma breve descrição do seu projeto.)*
 
-**IMPORTANTE**: [**Cadastre seu projeto nesse link**](https://docs.google.com/spreadsheets/d/1KXuMJ9TK7GPyahR_BfLwfn4ec7vX7DgiHx42vFc4E7g/edit?usp=sharing).
+O projeto MetFlix tem como objetivo o desenvolvimento de uma plataforma web para automatizar o processo de locação de filmes e séries de uma locadora.A proposta é criar um sistema completo que permita o gerenciamento do acervo de mídias, cadastro de clientes, controle de empréstimos e devoluções, aplicação de multas por atraso e geração de relatórios estratégicos. 
 
 Professor: [Marco André Mendes](github.com/marcoandre)
 
@@ -13,187 +13,188 @@ Equipe:
 - [Brayan Pedroso de Mattos](https://github.com/brayanpedroso)
 
 Links do projeto:
-(*Coloque aqui os links para a documentação do projeto e os repositórios e plubicação do backend e frontend.*)
 -   [Documentação (esse documento)](github.com/marcoandre/pi-modelo)
 -   Backend: [Repositório](github.com/marcoandre/pi-backend) e [Publicação](https://pi-backend.herokuapp.com/)
 -   Frontend: [Repositório](github.com/marcoandre/pi-frontend) e [Publicação](https://pi-frontend.herokuapp.com/)
 
-**Como usar esse modelo para o Projeto Integrador**
 
-*(Essa parte pode ser apagada depois.)*
-
-1. Faça um fork desse repositório para a sua conta do GitHub.
-2. Clone o repositório para o seu computador.
-3. Abra o arquivo README.md no seu editor de texto favorito (recomendamos o [Visual Studio Code](https://code.visualstudio.com/)).
-4. Tenha instaladas as seguintes extensões:
-   - [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
-   - [TODO Highlight](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
-5. Edite o arquivo README.md com as informações do seu projeto.
 
 # 1. Desenvolvimento
-*(Escolha um dos modelos de sistemas para desenvolver o projeto. Apague as informações desnecessárias depois.)*
--   As equipes serão avaliadas por cada etapa da documentação e entregas realizadas.
--   Cada equipe deverá escolher um sistema para o desenvolvimento das atividades, a partir dos modelos apresentados.
 
-**1.1 Modelos de Sistemas**
+# **1.1 Modelos de Sistemas**
 
-**Nessa parte a equipe deve escolher um dos modelos de sistemas para desenvolver o projeto. Ao escolher, escreva uma breve descrição do sistema e o motivo da escolha e pode apagar os outros modelos.**
+# **1.1.2 Empréstimo**
 
-**1.1.2 Empréstimo**
+O projeto MetFlix foi baseado no modelo de sistema de Empréstimo, pois a proposta consiste em desenvolver uma plataforma de locação de mídias (filmes e séries), cujo funcionamento é semelhante ao de uma biblioteca: o cliente realiza um empréstimo (locação), com data prevista para devolução, podendo sofrer penalidades em caso de atraso.
 
-**Gerenciamento de uma biblioteca**
+# 2. Situação‑Problema
 
-Uma ONG, chamada Sala Arco Íris, ajuda crianças de baixa renda em sua educação básica. Atualmente, recebeu uma doação de mais de 1000 livros e está montando a sua biblioteca. Eles querem emprestar os livros para as crianças e os pais das crianças. Apesar de
-terem um computador e as estantes necessárias à disposição nessa nova biblioteca, não possuem verba suficiente para um leitor de impressão digital ou para produção
-de carteirinhas para todas as crianças. Para isso, eles precisam de um sistema que gerencie todo o acervo, empréstimos, livros disponíveis, etc. mas que isso ocorra de maneira simples e sem necessidade de novos gastos. Também é importante que haja relatórios, permitindo o controle dos empréstimos e dos livros disponíveis no acervo.
+A MetFlix é uma locadora de filmes e séries que enfrenta dificuldades operacionais devido à falta de um sistema informatizado. Atualmente, todo o controle de estoque, locações, pagamentos e multas é feito manualmente, por meio de planilhas e anotações em papel. Isso gera erros frequentes, atrasos no atendimento, perda de dados importantes e retrabalho para os funcionários.
 
-2. Situação‑Problema
+Além disso, não há histórico integrado de clientes, as promoções não são aplicadas automaticamente e os relatórios gerenciais são imprecisos e demorados. Esses problemas afetam diretamente a eficiência da equipe e a experiência do cliente.
 
-Introdução
+Um sistema de gerenciamento digital é essencial para automatizar os processos, melhorar o controle do acervo e das locações, garantir a aplicação correta de regras e promoções, e oferecer relatórios confiáveis em tempo real.
 
-A MetFlix é uma empresa fictícia de aluguel de filmes e séries fundada há 5 anos pelo empreendedor Paulo Cardoso. Atualmente, MetFlix conta com uma loja física localizada em São Paulo, além de um pequeno portal online que registra apenas catálogos, mas não executa processos de locação. A equipe é composta por:
 
-Proprietário/Gestor: Paulo Cardoso
+# 3. Descrição da Proposta
 
-Atendentes: 3 funcionários responsáveis pelo atendimento ao cliente e processos de aluguel/retorno
+Será desenvolvido um sistema web responsivo para a MetFlix, com foco na automação de todo o processo de locação de mídias: desde o cadastro de clientes e títulos até devoluções, cobranças e geração de relatórios.
 
-Equipe de Estoque: 2 funcionários responsáveis pela organização dos acervos e manutenção dos discos físicos
+O sistema contará com três tipos de usuários:
 
-Suporte Técnico: terceirizado para manutenção básica de hardware e da página de catálogo
+- Administrador: gerencia o catálogo, planos de assinatura e acessa relatórios.
 
-Situação‑problema
+- Atendente: realiza locações, devoluções e registra pagamentos.
 
-Gerenciamento Manual de Inventário: todo o controle de disponibilidade de filmes e séries é feito em planilhas do Excel e anotações em papéis. Isso gera divergências frequentes entre o estoque físico e o que consta disponível.
+- Cliente: acessa o catálogo online, faz reservas e consulta seu histórico.
 
-Processo de Locação Fragmentado:
+As funcionalidades principais incluem:
 
-O atendente verifica manualmente a identidade do cliente e sua elegibilidade (nenhuma pendência de devolução)
+- Cadastro e login de clientes e funcionários
 
-Consulta a planilha para confirmar se o título está disponível fisicamente
+- Controle de estoque e locações
 
-Abre uma ficha de locação em papel, registra data de retirada e previsão de devolução (3 dias por padrão)
+- Cálculo de multas e geração automática de boletos
 
-Controle de Pagamentos e Multas:
+- Reservas online para membros
 
-Pagamentos de aluguel e eventuais multas (R$ 5,00 ao dia de atraso) são lançados manualmente no caixa.
+- Painéis de indicadores com dados em tempo real
 
-Boletos gerados de forma externa quando o cliente atrasa mais de 7 dias.
+- A plataforma vai padronizar os processos da empresa, reduzir o tempo de atendimento e oferecer dados estratégicos para apoiar o crescimento da MetFlix.
 
-Experiência do Cliente:
+# 4. Modelagem de Dados
 
-Não há histórico de aluguéis integrado; atendentes dependem de memória ou das fichas de papel.
 
-Promoções para membros Premium não são aplicadas automaticamente.
 
-Relatórios Gerenciais:
+# 4. Regras de Negócio
 
-Relatórios mensais de locação, faturamento e itens mais alugados são extraídos manualmente das planilhas, consumindo muito tempo.
+RN01. Cadastro único de CPF e e-mail
+Cada cliente deve ter um CPF e e-mail únicos no sistema.
 
-Conclusão
+Cada funcionário deve ter um e-mail único.
 
-A MetFlix enfrenta atrasos, retrabalho e falhas de comunicação entre inventário, caixa e atendimento, resultando em baixo nível de satisfação do cliente e perda de receita por multas não cobradas. Um sistema integrado de gerenciamento de locações, estoque e pagamentos pode automatizar processos, minimizar erros e prover indicadores em tempo real para melhor tomada de decisão.
+RN02. Tipos de usuário
+Existem três tipos de usuários:
 
-3. Descrição da Proposta
+Administrador: acesso total ao sistema.
 
-O software proposto para a MetFlix será uma plataforma web responsiva com foco em gerenciamento completo de aluguel de mídias, desde o cadastro de clientes e títulos até o controle de devoluções e emissão de relatórios.
+Atendente: apenas operações de atendimento (locações, devoluções, pagamentos).
 
-Foco de Ação: automatizar o ciclo de locação (consulta de catálogos, registro de empréstimos, controle de devolução e cobranças).
+Cliente: apenas consultas, reservas e histórico próprio.
 
-Níveis de Usuário:
+RN03. Planos de assinatura
+Um cliente deve estar vinculado a um plano (ex.: BASICO, PADRAO, PREMIUM) que pode restringir:
 
-Administrador: configura catálogo, planos de assinatura, e acessa relatórios estratégicos;
+Quantidade de mídias simultâneas
 
-Atendente: registra aluguéis, devoluções e pagamentos;
+Tipo de mídia (ex.: DIGITAL só para planos avançados)
+(Essas restrições devem ser definidas nas regras internas do sistema, com base nas políticas da empresa.)
 
-Cliente (usuário externo): visualiza catálogo online, faz reservas e consulta histórico de locações.
+RN04. Controle de estoque
+A quantidade de uma mídia disponível deve ser reduzida ao realizar uma locação e aumentada ao registrar a devolução.
 
-- Funcionalidades Principais:
+Não é permitido locar uma mídia com quantidade igual a zero.
 
-Cadastro e autenticação de clientes e funcionários
+RN05. Devolução e cálculo de multa
+Caso a data de devolução seja posterior à data prevista, deve ser calculada uma multa por dia de atraso.
 
-Registro e acompanhamento de débitos e multas
+O valor da multa deve ser armazenado na tabela Locacao_Midia.
 
-Disponibilidade de reservas online para membros registrados
+RN06. Pagamento obrigatório para finalização
+Uma locação só será considerada fechada após o registro do pagamento (aluguel e, se houver, multa).
 
-Geração automática de boletos e recibos
+RN07. Reservas
+Apenas clientes ativos e logados podem fazer reservas.
 
-Painéis de indicadores (disponibilidade de estoque, itens mais locados, multas pendentes)
+O sistema deve permitir uma reserva por título por cliente enquanto o status estiver como pendente.
 
-Com esta solução, MetFlix terá processos padronizados, menor tempo de atendimento e melhores insights para ações de marketing e expansão.
+Reservas vencidas ou não convertidas em locações dentro de um prazo definido (ex.: 24h) devem ser automaticamente canceladas.
 
-4. Modelagem de Dados
+RN08. Inativação lógica
+Clientes, mídias, e funcionários não devem ser excluídos fisicamente do banco, mas marcados como ativo = 0.
 
-Entidades Principais:
+RN09. Histórico de locações e reservas
+O cliente pode acessar apenas seu próprio histórico.
 
-Cliente (Customer): id, nome, CPF, e-mail, telefone, plano (Básico/Premium), data de cadastro
+O atendente pode acessar o histórico de qualquer cliente.
 
-Funcionario (Staff): id, nome, login, senha, nível (Atendente/Administrador)
+RN10. Acesso por perfil
+Cada funcionalidade do sistema deve ser acessível apenas pelos perfis autorizados:
 
-Mídia (MediaItem): id, título, tipo (Filme/Série), gênero, ano, classificação indicativa, status (Disponível/Alugado/Reservado)
+Administrador: tudo
 
-Gênero (Genre): id, descrição
+Atendente: locação, devolução, pagamento, consulta
 
-Locação (RentalTransaction): id, cliente_id, data_retirada, data_prevista_devolucao, data_devolucao, status (Em Aberto/Concluído)
+Cliente: consulta, reserva, histórico pessoal
 
-Pagamento (Payment): id, transacao_id, valor_aluguel, valor_multa, data_pagamento, método (Dinheiro/Cartão/Online)
+RN11. Geração de relatórios
+Os relatórios devem ser gerados apenas por administradores.
 
-Reserva (Reservation): id, cliente_id, midia_id, data_reserva, status (Ativa/Cancelada)
+Devem conter dados como: quantidade de locações por período, mídias mais locadas, faturamento mensal, etc.
 
-Relacionamentos:
+# 5. Requisitos Funcionais
 
-Um Cliente pode gerar múltiplas Locações e Reservas.
+RF01. Cadastro de Usuários
+O sistema deve permitir o cadastro de clientes com nome, CPF, e-mail, telefone, plano, e data de cadastro.
 
-Cada Locação gera um ou mais Pagamentos (aluguel + eventual multa).
+O sistema deve permitir o cadastro de funcionários, com nome, e-mail e cargo.
 
-Uma Mídia possui um Gênero e pode estar associada a várias Locações e Reservas.
+O sistema deve permitir o cadastro de contas de acesso (usuários) para clientes e funcionários.
 
-(Diagrama Entidade-Relacionamento desenvolvido na próxima fase.)
+RF02. Autenticação e Acesso
+O sistema deve permitir que os usuários realizem login com autenticação por senha.
 
-4. Regras de Negócio
+O sistema deve permitir o acesso conforme o tipo de usuário: Administrador, Atendente ou Cliente.
 
-RN01 – Elegibilidade para Locação: Cliente só pode alugar se não possuir locações em aberto ou multas pendentes.
+RF03. Gerenciamento de Mídias
+O administrador deve poder cadastrar, editar, ativar/desativar mídias, com informações como título, tipo, gênero, ano, classificação e quantidade.
 
-RN02 – Período de Locação: Prazo padrão de 3 dias corridos, não prorrogável após 1 dia de atraso.
+O sistema deve permitir o controle de estoque de mídias com base nas locações e devoluções.
 
-RN03 – Limite de Itens: Plano Básico: até 3 itens simultâneos; Plano Premium: até 5 itens.
+RF04. Gerenciamento de Gêneros
+O administrador deve poder cadastrar e editar gêneros de mídia.
 
-RN04 – Multa por Atraso: R$ 5,00 por dia de atraso a partir do quarto dia.
+RF05. Locação de Mídias
+O atendente deve poder registrar uma nova locação com o cliente, mídias, e data prevista de devolução.
 
-RN05 – Reserva de Mídias: Apenas clientes com plano Premium podem reservar títulos indisponíveis.
+O sistema deve permitir o registro de devoluções, atualizando o status da locação e o estoque.
 
-RN06 – Desconto Premium: Clientes Premium recebem 10% de desconto no valor de aluguel.
+RF06. Cálculo e Registro de Multas
+O sistema deve calcular multas por atraso com base na data de devolução e registrar o valor em Locacao_Midia.
 
-RN07 – Geração de Boleto: Boleto gerado automaticamente se multa acumulada ultrapassar R$ 50,00.
+RF07. Pagamento
+O atendente deve poder registrar pagamentos de aluguel e multas, com método e data.
 
-RN08 – Visualização de Relatórios: Apenas Administradores têm acesso completo a relatórios financeiros e de uso.
+RF08. Reservas Online
+O cliente deve poder consultar o catálogo e reservar mídias online, se disponíveis.
 
-5. Requisitos Funcionais
+O atendente ou sistema deve poder converter reservas em locações ou cancelá-las.
 
-Entradas
+RF09. Consulta de Histórico
+O cliente deve poder consultar seu histórico de locações e reservas no sistema.
 
-R.F. 01 – Cadastro de Cliente: Permite registrar novo cliente; dados necessários: nome, CPF, e-mail, plano; usuários: Atendente, Administrador.
+O atendente deve poder consultar o histórico de qualquer cliente.
 
-R.F. 02 – Cadastro de Mídia: Permite inserir novo título; dados necessários: título, tipo, gênero, ano; usuários: Administrador.
+RF10. Gerenciamento de Planos
+O administrador deve poder gerenciar os tipos de plano de assinatura disponíveis.
 
-R.F. 03 – Registro de Locação: Captura dados de aluguel; dados necessários: cliente_id, midia_id, data_retirada; usuários: Atendente.
+RF11. Painéis e Relatórios
+O administrador deve poder acessar painéis com dados em tempo real sobre:
 
-Processos
+Mídias mais alugadas
 
-R.F. 04 – Autenticação de Usuário: Verifica login/senha e define nível de acesso; dados necessários: login, senha; usuários: todos.
+Locações por período
 
-R.F. 05 – Cálculo de Multa: Calcula valor de multa conforme dias de atraso; dados necessários: data_prevista, data_devolucao; usuários: sistema.
+Clientes ativos/inativos
 
-R.F. 06 – Geração de Boletos: Emite boleto eletrônico para pagamento de multa; dados necessários: cliente_id, valor; usuários: sistema.
+Receitas e inadimplência
 
-Saídas
+O sistema deve gerar relatórios gerenciais, exportáveis em PDF/Excel.
 
-R.F. 07 – Relatório de Locação: Exibe lista de aluguéis por período; dados necessários: cliente, título, datas; usuários: Administrador.
+RF12. Controle de Acesso
+O sistema deve restringir o acesso às funcionalidades de acordo com o tipo de usuário.
 
-R.F. 08 – Painel de Estoque: Mostra disponibilidade de mídias; dados necessários: título, status; usuários: Atendente, Administrador.
-
-R.F. 09 – Histórico de Cliente: Lista todas as transações e pagamentos de um cliente; dados necessários: id_cliente; usuários: Atendente, Cliente.
-
-6. Requisitos Não Funcionais
+# 6. Requisitos Não Funcionais
 
 R.N.F. 01 – Interface Web Responsiva: Compatível com desktop e dispositivos móveis.
 
@@ -210,34 +211,3 @@ R.N.F. 06 – Conformidade: Atendimento à LGPD para tratamento de dados de clie
 R.N.F. 07 – Portabilidade: Deploy em servidores Linux e containers Docker.
 
 R.N.F. 08 – Manutenibilidade: Código documentado e testes automatizados.
-
-7. Diagrama de Caso de Uso
-
-Atores
-
-Cliente: Browsing e reserva de títulos, consulta histórico.
-
-Atendente: Realiza locação, devolução e pagamento.
-
-Administrador: Gera relatórios, cadastra mídias e gerencia usuários.
-
-Casos de Uso Principais
-
-Autenticar Usuário (incluído por todos)
-
-Registrar Cliente
-
-Cadastrar Mídia
-
-Buscar Catálogo
-
-Realizar Locação
-
-Registrar Devolução
-
-Calcular Multa (extensão de Devolução)
-
-Gerar Boleto (extensão de Calcular Multa)
-
-Gerar Relatórios
-
