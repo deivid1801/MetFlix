@@ -63,7 +63,7 @@ As funcionalidades principais incluem:
 - A plataforma vai padronizar os processos da empresa, reduzir o tempo de atendimento e oferecer dados estratégicos para apoiar o crescimento da MetFlix.
 
 # 4. Modelagem de Dados
-
+![Modelagem de Dados](docs/modelagem-dados.png)
 
 
 # 4. Regras de Negócio
