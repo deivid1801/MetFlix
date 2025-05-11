@@ -67,148 +67,131 @@ As funcionalidades principais incluem:
 
 
 
-# 4. Regras de Negócio
 
-RN01. Cadastro único de CPF e e-mail
-Cada cliente deve ter um CPF e e-mail únicos no sistema.
 
+
+
+## 4. 📌 Regras de Negócio
+
+**RN01. Cadastro único de CPF e e-mail**  
+Cada cliente deve ter um CPF e e-mail únicos no sistema.  
 Cada funcionário deve ter um e-mail único.
 
-RN02. Tipos de usuário
+**RN02. Tipos de usuário**  
 Existem três tipos de usuários:
+- **Administrador:** acesso total ao sistema.
+- **Atendente:** apenas operações de atendimento (locações, devoluções, pagamentos).
+- **Cliente:** apenas consultas, reservas e histórico próprio.
 
-Administrador: acesso total ao sistema.
+**RN03. Planos de assinatura**  
+Um cliente deve estar vinculado a um plano (ex.: `BASICO`, `PADRAO`, `PREMIUM`) que pode restringir:
+- Quantidade de mídias simultâneas
+- Tipo de mídia (ex.: `DIGITAL` só para planos avançados)  
+*(Essas restrições devem ser definidas nas regras internas do sistema, com base nas políticas da empresa.)*
 
-Atendente: apenas operações de atendimento (locações, devoluções, pagamentos).
-
-Cliente: apenas consultas, reservas e histórico próprio.
-
-RN03. Planos de assinatura
-Um cliente deve estar vinculado a um plano (ex.: BASICO, PADRAO, PREMIUM) que pode restringir:
-
-Quantidade de mídias simultâneas
-
-Tipo de mídia (ex.: DIGITAL só para planos avançados)
-(Essas restrições devem ser definidas nas regras internas do sistema, com base nas políticas da empresa.)
-
-RN04. Controle de estoque
-A quantidade de uma mídia disponível deve ser reduzida ao realizar uma locação e aumentada ao registrar a devolução.
-
+**RN04. Controle de estoque**  
+A quantidade de uma mídia disponível deve ser reduzida ao realizar uma locação e aumentada ao registrar a devolução.  
 Não é permitido locar uma mídia com quantidade igual a zero.
 
-RN05. Devolução e cálculo de multa
-Caso a data de devolução seja posterior à data prevista, deve ser calculada uma multa por dia de atraso.
+**RN05. Devolução e cálculo de multa**  
+Caso a data de devolução seja posterior à data prevista, deve ser calculada uma multa por dia de atraso.  
+O valor da multa deve ser armazenado na tabela `Locacao_Midia`.
 
-O valor da multa deve ser armazenado na tabela Locacao_Midia.
-
-RN06. Pagamento obrigatório para finalização
+**RN06. Pagamento obrigatório para finalização**  
 Uma locação só será considerada fechada após o registro do pagamento (aluguel e, se houver, multa).
 
-RN07. Reservas
-Apenas clientes ativos e logados podem fazer reservas.
-
-O sistema deve permitir uma reserva por título por cliente enquanto o status estiver como pendente.
-
+**RN07. Reservas**  
+Apenas clientes ativos e logados podem fazer reservas.  
+O sistema deve permitir uma reserva por título por cliente enquanto o status estiver como `pendente`.  
 Reservas vencidas ou não convertidas em locações dentro de um prazo definido (ex.: 24h) devem ser automaticamente canceladas.
 
-RN08. Inativação lógica
-Clientes, mídias, e funcionários não devem ser excluídos fisicamente do banco, mas marcados como ativo = 0.
+**RN08. Inativação lógica**  
+Clientes, mídias e funcionários não devem ser excluídos fisicamente do banco, mas marcados como `ativo = 0`.
 
-RN09. Histórico de locações e reservas
-O cliente pode acessar apenas seu próprio histórico.
-
+**RN09. Histórico de locações e reservas**  
+O cliente pode acessar apenas seu próprio histórico.  
 O atendente pode acessar o histórico de qualquer cliente.
 
-RN10. Acesso por perfil
+**RN10. Acesso por perfil**  
 Cada funcionalidade do sistema deve ser acessível apenas pelos perfis autorizados:
+- **Administrador:** tudo
+- **Atendente:** locação, devolução, pagamento, consulta
+- **Cliente:** consulta, reserva, histórico pessoal
 
-Administrador: tudo
+**RN11. Geração de relatórios**  
+Os relatórios devem ser gerados apenas por administradores e conter dados como:
+- Quantidade de locações por período
+- Mídias mais locadas
+- Faturamento mensal
+- Inadimplência
 
-Atendente: locação, devolução, pagamento, consulta
+---
 
-Cliente: consulta, reserva, histórico pessoal
+## 5. ✅ Requisitos Funcionais
 
-RN11. Geração de relatórios
-Os relatórios devem ser gerados apenas por administradores.
+**RF01. Cadastro de Usuários**  
+O sistema deve permitir o cadastro de clientes e funcionários, bem como suas respectivas contas de acesso.
 
-Devem conter dados como: quantidade de locações por período, mídias mais locadas, faturamento mensal, etc.
+**RF02. Autenticação e Acesso**  
+Login com autenticação por senha, com acesso controlado por tipo de usuário.
 
-# 5. Requisitos Funcionais
+**RF03. Gerenciamento de Mídias**  
+Cadastro, edição e ativação/desativação de mídias. Controle de estoque baseado em locações e devoluções.
 
-RF01. Cadastro de Usuários
-O sistema deve permitir o cadastro de clientes com nome, CPF, e-mail, telefone, plano, e data de cadastro.
+**RF04. Gerenciamento de Gêneros**  
+Cadastro e edição de gêneros de mídia.
 
-O sistema deve permitir o cadastro de funcionários, com nome, e-mail e cargo.
+**RF05. Locação de Mídias**  
+Registro de locações e devoluções com atualização de estoque e datas.
 
-O sistema deve permitir o cadastro de contas de acesso (usuários) para clientes e funcionários.
+**RF06. Cálculo e Registro de Multas**  
+Cálculo de multas por atraso e armazenamento na tabela `Locacao_Midia`.
 
-RF02. Autenticação e Acesso
-O sistema deve permitir que os usuários realizem login com autenticação por senha.
+**RF07. Pagamento**  
+Registro de pagamentos (aluguel e multa), com data e método.
 
-O sistema deve permitir o acesso conforme o tipo de usuário: Administrador, Atendente ou Cliente.
+**RF08. Reservas Online**  
+Clientes podem consultar o catálogo e fazer reservas; atendentes podem converter ou cancelar reservas.
 
-RF03. Gerenciamento de Mídias
-O administrador deve poder cadastrar, editar, ativar/desativar mídias, com informações como título, tipo, gênero, ano, classificação e quantidade.
+**RF09. Consulta de Histórico**  
+Clientes acessam seu próprio histórico; atendentes podem consultar históricos de qualquer cliente.
 
-O sistema deve permitir o controle de estoque de mídias com base nas locações e devoluções.
+**RF10. Gerenciamento de Planos**  
+Administradores podem gerenciar os planos de assinatura disponíveis.
 
-RF04. Gerenciamento de Gêneros
-O administrador deve poder cadastrar e editar gêneros de mídia.
+**RF11. Painéis e Relatórios**  
+Administradores acessam dashboards com dados em tempo real e relatórios exportáveis (PDF/Excel).
 
-RF05. Locação de Mídias
-O atendente deve poder registrar uma nova locação com o cliente, mídias, e data prevista de devolução.
+**RF12. Controle de Acesso**  
+O sistema deve restringir funcionalidades com base no perfil do usuário.
 
-O sistema deve permitir o registro de devoluções, atualizando o status da locação e o estoque.
+---
 
-RF06. Cálculo e Registro de Multas
-O sistema deve calcular multas por atraso com base na data de devolução e registrar o valor em Locacao_Midia.
+## 6. ⚙️ Requisitos Não Funcionais
 
-RF07. Pagamento
-O atendente deve poder registrar pagamentos de aluguel e multas, com método e data.
+**RNF01. Interface Web Responsiva**  
+Compatível com desktop e dispositivos móveis.
 
-RF08. Reservas Online
-O cliente deve poder consultar o catálogo e reservar mídias online, se disponíveis.
+**RNF02. Desempenho**  
+Deve suportar pelo menos 50 usuários simultâneos sem degradação significativa.
 
-O atendente ou sistema deve poder converter reservas em locações ou cancelá-las.
+**RNF03. Segurança**  
+- Senhas criptografadas
+- Controle de roles/permissões
+- Prevenção contra SQL Injection e XSS
 
-RF09. Consulta de Histórico
-O cliente deve poder consultar seu histórico de locações e reservas no sistema.
+**RNF04. Disponibilidade**  
+Disponibilidade de 99,9% do tempo, exceto manutenções planejadas.
 
-O atendente deve poder consultar o histórico de qualquer cliente.
+**RNF05. Escalabilidade**  
+Arquitetura modular ou orientada a microserviços, permitindo expansão futura.
 
-RF10. Gerenciamento de Planos
-O administrador deve poder gerenciar os tipos de plano de assinatura disponíveis.
+**RNF06. Conformidade**  
+Adequação à LGPD (Lei Geral de Proteção de Dados).
 
-RF11. Painéis e Relatórios
-O administrador deve poder acessar painéis com dados em tempo real sobre:
+**RNF07. Portabilidade**  
+Deve rodar em servidores Linux e ambientes Docker.
 
-Mídias mais alugadas
+**RNF08. Manutenibilidade**  
+Código com documentação clara e cobertura de testes automatizados.
 
-Locações por período
-
-Clientes ativos/inativos
-
-Receitas e inadimplência
-
-O sistema deve gerar relatórios gerenciais, exportáveis em PDF/Excel.
-
-RF12. Controle de Acesso
-O sistema deve restringir o acesso às funcionalidades de acordo com o tipo de usuário.
-
-# 6. Requisitos Não Funcionais
-
-R.N.F. 01 – Interface Web Responsiva: Compatível com desktop e dispositivos móveis.
-
-R.N.F. 02 – Desempenho: Suportar até 50 usuários simultâneos sem degradação.
-
-R.N.F. 03 – Segurança: Autenticação com senha criptografada; roles e permissões.
-
-R.N.F. 04 – Disponibilidade: Disponível 99,9% do tempo, exceto em manutenção agendada.
-
-R.N.F. 05 – Escalabilidade: Arquitetura em camadas para fácil expansão (microserviços ou módulos).
-
-R.N.F. 06 – Conformidade: Atendimento à LGPD para tratamento de dados de clientes.
-
-R.N.F. 07 – Portabilidade: Deploy em servidores Linux e containers Docker.
-
-R.N.F. 08 – Manutenibilidade: Código documentado e testes automatizados.
