@@ -19,10 +19,6 @@ Links do projeto:
 
 
 
-# 1. Desenvolvimento
-
-# **1.1 Modelos de Sistemas**
-
 # **1.1.2 Empréstimo**
 
 O projeto MetFlix foi baseado no modelo de sistema de Empréstimo, pois a proposta consiste em desenvolver uma plataforma de locação de mídias (filmes e séries), cujo funcionamento é semelhante ao de uma biblioteca: o cliente realiza um empréstimo (locação), com data prevista para devolução, podendo sofrer penalidades em caso de atraso.
